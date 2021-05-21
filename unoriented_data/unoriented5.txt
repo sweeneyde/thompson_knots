@@ -1,0 +1,160 @@
+Description:
+Components: 1
+Homfly (lm): L^-2*M^2 - 2*L^-2 - L^-4
+Homfly (az): a^-2*z^2 + 2*a^-2 - a^-4
+	(o((oo)(oo))) / (((oo)(oo))o)
+	(((oo)o)(oo)) / (o((o(oo))o))
+	((o((oo)o))o) / ((oo)(o(oo)))
+
+Description:
+Components: 1
+Homfly (lm): -L^4 + L^2*M^2 - 2*L^2
+Homfly (az): -a^4 + a^2*z^2 + 2*a^2
+	(o((o(oo))o)) / (((oo)o)(oo))
+	((oo)(o(oo))) / ((o((oo)o))o)
+	(((oo)(oo))o) / (o((oo)(oo)))
+
+Description:
+Components: 1
+Homfly (lm): 1
+Homfly (az): 1
+	(o(oo)) / ((oo)o)
+	((oo)o) / (o(oo))
+	(o(o(oo))) / (((oo)o)o)
+	(o((oo)o)) / ((oo)(oo))
+	((oo)(oo)) / (o((oo)o))
+	((oo)(oo)) / ((o(oo))o)
+	((o(oo))o) / ((oo)(oo))
+	(((oo)o)o) / (o(o(oo)))
+	(o(o(o(oo)))) / ((oo)((oo)o))
+	(o(o(o(oo)))) / ((o((oo)o))o)
+	(o(o(o(oo)))) / (((oo)(oo))o)
+	(o(o((oo)o))) / ((oo)(o(oo)))
+	(o(o((oo)o))) / ((o((oo)o))o)
+	(o((oo)(oo))) / ((o(o(oo)))o)
+	(o((oo)(oo))) / ((((oo)o)o)o)
+	(o((o(oo))o)) / ((oo)(o(oo)))
+	(o((o(oo))o)) / ((o(oo))(oo))
+	(o((o(oo))o)) / ((o((oo)o))o)
+	(o((o(oo))o)) / (((o(oo))o)o)
+	(o((o(oo))o)) / ((((oo)o)o)o)
+	(o(((oo)o)o)) / (((oo)o)(oo))
+	(o(((oo)o)o)) / ((o(o(oo)))o)
+	(o(((oo)o)o)) / (((oo)(oo))o)
+	((oo)(o(oo))) / (o(o((oo)o)))
+	((oo)(o(oo))) / (o((o(oo))o))
+	((oo)(o(oo))) / ((o(o(oo)))o)
+	((oo)((oo)o)) / (o(o(o(oo))))
+	((oo)((oo)o)) / ((o((oo)o))o)
+	((o(oo))(oo)) / (o((o(oo))o))
+	((o(oo))(oo)) / ((((oo)o)o)o)
+	(((oo)o)(oo)) / (o(((oo)o)o))
+	(((oo)o)(oo)) / ((o((oo)o))o)
+	(((oo)o)(oo)) / (((o(oo))o)o)
+	((o(o(oo)))o) / (o((oo)(oo)))
+	((o(o(oo)))o) / (o(((oo)o)o))
+	((o(o(oo)))o) / ((oo)(o(oo)))
+	((o((oo)o))o) / (o(o(o(oo))))
+	((o((oo)o))o) / (o(o((oo)o)))
+	((o((oo)o))o) / (o((o(oo))o))
+	((o((oo)o))o) / ((oo)((oo)o))
+	((o((oo)o))o) / (((oo)o)(oo))
+	(((oo)(oo))o) / (o(o(o(oo))))
+	(((oo)(oo))o) / (o(((oo)o)o))
+	(((o(oo))o)o) / (o((o(oo))o))
+	(((o(oo))o)o) / (((oo)o)(oo))
+	((((oo)o)o)o) / (o((oo)(oo)))
+	((((oo)o)o)o) / (o((o(oo))o))
+	((((oo)o)o)o) / ((o(oo))(oo))
+
+Description:
+Components: 2
+Homfly (lm): L^3*M^-1 - L*M + L*M^-1
+Homfly (az): a^3*z^-1 - a*z - a*z^-1
+	(o(o((oo)o))) / (((oo)o)(oo))
+	((oo)((oo)o)) / (o((oo)(oo)))
+	((o(oo))(oo)) / (((oo)(oo))o)
+	(((o(oo))o)o) / ((oo)(o(oo)))
+
+Description:
+Components: 2
+Homfly (lm): -L^-1*M + L^-1*M^-1 + L^-3*M^-1
+Homfly (az): a^-1*z + a^-1*z^-1 - a^-3*z^-1
+	(o((oo)(oo))) / ((oo)((oo)o))
+	((oo)(o(oo))) / (((o(oo))o)o)
+	(((oo)o)(oo)) / (o(o((oo)o)))
+	(((oo)(oo))o) / ((o(oo))(oo))
+
+Description:
+Components: 2
+Homfly (lm): -L*M^-1 - L^-1*M^-1
+Homfly (az): a*z^-1 - a^-1*z^-1
+	(o(o(oo))) / (o((oo)o))
+	(o(o(oo))) / ((o(oo))o)
+	(o((oo)o)) / (o(o(oo)))
+	(o((oo)o)) / (((oo)o)o)
+	((o(oo))o) / (o(o(oo)))
+	((o(oo))o) / (((oo)o)o)
+	(((oo)o)o) / (o((oo)o))
+	(((oo)o)o) / ((o(oo))o)
+	(o(o(o(oo)))) / (o(((oo)o)o))
+	(o(o(o(oo)))) / (((o(oo))o)o)
+	(o(o(o(oo)))) / ((((oo)o)o)o)
+	(o(o((oo)o))) / (o((oo)(oo)))
+	(o(o((oo)o))) / ((o(oo))(oo))
+	(o(o((oo)o))) / ((((oo)o)o)o)
+	(o((oo)(oo))) / (o(o((oo)o)))
+	(o((oo)(oo))) / (o((o(oo))o))
+	(o((o(oo))o)) / (o((oo)(oo)))
+	(o(((oo)o)o)) / (o(o(o(oo))))
+	(o(((oo)o)o)) / ((oo)(o(oo)))
+	(o(((oo)o)o)) / ((oo)((oo)o))
+	((oo)(o(oo))) / (o(((oo)o)o))
+	((oo)((oo)o)) / (o(((oo)o)o))
+	((oo)((oo)o)) / ((o(oo))(oo))
+	((oo)((oo)o)) / (((o(oo))o)o)
+	((o(oo))(oo)) / (o(o((oo)o)))
+	((o(oo))(oo)) / ((oo)((oo)o))
+	((o(oo))(oo)) / ((o(o(oo)))o)
+	(((oo)o)(oo)) / ((o(o(oo)))o)
+	((o(o(oo)))o) / ((o(oo))(oo))
+	((o(o(oo)))o) / (((oo)o)(oo))
+	((o(o(oo)))o) / ((((oo)o)o)o)
+	((o((oo)o))o) / (((oo)(oo))o)
+	(((oo)(oo))o) / ((o((oo)o))o)
+	(((oo)(oo))o) / (((o(oo))o)o)
+	(((o(oo))o)o) / (o(o(o(oo))))
+	(((o(oo))o)o) / ((oo)((oo)o))
+	(((o(oo))o)o) / (((oo)(oo))o)
+	((((oo)o)o)o) / (o(o(o(oo))))
+	((((oo)o)o)o) / (o(o((oo)o)))
+	((((oo)o)o)o) / ((o(o(oo)))o)
+
+Description:
+Components: 3
+Homfly (lm): L^2*M^-2 + 2*M^-2 + L^-2*M^-2
+Homfly (az): a^2*z^-2 - 2*z^-2 + a^-2*z^-2
+	(o(o(o(oo)))) / (o(o((oo)o)))
+	(o(o(o(oo)))) / (o((o(oo))o))
+	(o(o(o(oo)))) / ((o(o(oo)))o)
+	(o(o((oo)o))) / (o(o(o(oo))))
+	(o(o((oo)o))) / (o(((oo)o)o))
+	(o(o((oo)o))) / (((o(oo))o)o)
+	(o((o(oo))o)) / (o(o(o(oo))))
+	(o((o(oo))o)) / (o(((oo)o)o))
+	(o(((oo)o)o)) / (o(o((oo)o)))
+	(o(((oo)o)o)) / (o((o(oo))o))
+	(o(((oo)o)o)) / ((((oo)o)o)o)
+	((o(o(oo)))o) / (o(o(o(oo))))
+	((o(o(oo)))o) / ((o((oo)o))o)
+	((o(o(oo)))o) / (((o(oo))o)o)
+	((o((oo)o))o) / ((o(o(oo)))o)
+	((o((oo)o))o) / ((((oo)o)o)o)
+	(((o(oo))o)o) / (o(o((oo)o)))
+	(((o(oo))o)o) / ((o(o(oo)))o)
+	(((o(oo))o)o) / ((((oo)o)o)o)
+	((((oo)o)o)o) / (o(((oo)o)o))
+	((((oo)o)o)o) / ((o((oo)o))o)
+	((((oo)o)o)o) / (((o(oo))o)o)
+
+elapsed time: 1.678215503692627
