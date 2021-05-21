@@ -7,7 +7,7 @@ cache = lru_cache(maxsize=None)
 lru_cache = lru_cache(maxsize=128)
 
 unlink_trees = {tuple(line.split(" / ")) for line in
-                open("unlink_trees7.txt").read().splitlines()}
+                open("unlink_trees8.txt").read().splitlines()}
 
 
 @lru_cache
@@ -97,10 +97,6 @@ class TreePair(tuple):
     @lru_cache
     def num_leaves(self):
         return self[0].count("o")
-
-    @lru_cache
-    def leaf_indexes(self):
-        return leaf_index(self[0]), leaf_index(self[1])
 
 
 ##################################
@@ -363,24 +359,64 @@ def move_local3(pair: TreePair):
 # )
 #
 #
-# @make_move_function(also_mirror=True)
-# def move_outside2(pair: TreePair):
-#     word1, word2 = pair
-#
-#     match1 = outside2_top_pattern.fullmatch(word1)
-#     if match1 is None:
-#         return
-#
-#     match2 = outside_bottom_pattern.fullmatch(word2)
-#     if match2 is None:
-#         return
-#
-#     top_a, top_b = match1.groups()
-#     bottom_a, bottom_b = match2.groups()
-#
-#     new_top = f"((o{top_a})({top_b}o))"
-#     new_bottom = f"(((o{bottom_a}){bottom_b})o)"
-#     yield TreePair(new_top, new_bottom)
+
+@make_move_function(also_mirror=True)
+def move_outside2(pair: TreePair):
+    set1, set2 = pair.paren_pair_sets()
+    n = pair.num_leaves()
+
+    for bottom_i in range(n):
+        bottom_required = {(0, n), (0, n-1), (0, bottom_i), (1, bottom_i)}
+        if len(bottom_required) < 4 or not (bottom_required <= set2):
+            continue
+        if {(1, i) for i in range(bottom_i)} & set2:
+            continue
+        if {(0, i) for i in range(bottom_i+1, n-1)} & set2:
+            continue
+        for top_i in range(n):
+            top_required = {(0, n), (1, n), (1, top_i), (top_i, n)}
+            if len(top_required) < 4 or not (top_required <= set1):
+                continue
+            if {(i, n) for i in range(top_i+1, n)} & set1:
+                continue
+            if {(1, i) for i in range(2, top_i)} & set1:
+                continue
+            word1, word2 = map(list, pair)
+            leaf_index1, leaf_index2 = pair.leaf_indexes()
+
+            assert word1[:2] == list("(o")
+            assert word1[-1:] == list(")")
+            del word1[:2]
+            del word1[-1:]
+
+            li2b = leaf_index2[bottom_i-1]
+            assert word2[li2b:li2b+2] == list("o)")
+            del word2[li2b+1:li2b+2]
+
+            li2a = leaf_index2[0]
+            assert word2[li2a-1:li2a+1] == list("(o")
+            del word2[li2a-1:li2a+1]
+
+            yield TreePair("".join(word1), "".join(word2))
+
+
+
+
+    #
+    # match1 = outside2_top_pattern.fullmatch(word1)
+    # if match1 is None:
+    #     return
+    #
+    # match2 = outside_bottom_pattern.fullmatch(word2)
+    # if match2 is None:
+    #     return
+    #
+    # top_a, top_b = match1.groups()
+    # bottom_a, bottom_b = match2.groups()
+    #
+    # new_top = f"((o{top_a})({top_b}o))"
+    # new_bottom = f"(((o{bottom_a}){bottom_b})o)"
+    # yield TreePair(new_top, new_bottom)
 
 
 @make_move_function(also_mirror=True)
@@ -532,3 +568,97 @@ def move_local6(pair: TreePair):
         word2list[li2 - 3:li2 + 7] = list("o")
 
         yield TreePair("".join(word1list), "".join(word2list))
+
+@make_move_function(also_mirror=True)
+def move_local_twist(pair: TreePair):
+    set1, set2 = pair.paren_pair_sets()
+    n = pair.num_leaves()
+
+    for i in range(n):
+        top_required = {(i, i+3), (i+1, i+3), (i+3, i+5)}
+        bottom_required = {(i, i+2), (i+2, i+4), (i+2, i+5)}
+
+        if top_required <= set1 and bottom_required <= set2:
+            # We can do the move.
+            word1, word2 = map(list, pair)
+            leaf_index1, leaf_index2 = pair.leaf_indexes()
+
+            li1b = leaf_index1[i+3]
+            assert word1[li1b - 1 : li1b + 3] == list("(oo)")
+            word1[li1b - 1: li1b + 3] = list("o")
+
+            li1a = leaf_index1[i]
+            assert word1[li1a-1:li1a+6] == list("(o(oo))")
+            word1[li1a - 1:li1a + 6] = list("o")
+
+            li2b = leaf_index2[i+2]
+            assert word2[li2b - 2: li2b + 5] == list("((oo)o)")
+            word2[li2b - 2: li2b + 5] = list("o")
+
+            li2a = leaf_index2[i]
+            assert word2[li2a - 1:li2a + 3] == list("(oo)")
+            word2[li2a - 1:li2a + 3] = list("o")
+
+            yield TreePair(''.join(word1), ''.join(word2))
+
+
+@make_move_function(also_mirror=True)
+def move_local_shufflebights(pair: TreePair):
+    set1, set2 = pair.paren_pair_sets()
+    n = pair.num_leaves()
+
+    for i in range(n):
+        top_required = {(i, i+2), (i, i+3)}
+        if not top_required <= set1:
+            continue
+
+        j1s = [j for j in range(n + 1) if (j, i + 2) in set2]
+        if len(j1s) != 1:
+            continue
+        [j1] = j1s
+        if (j1, i+1) not in set2:
+            continue
+        j1s_1 = [j for j in range(n + 1) if (j, i + 1) in set2]
+        if len(j1s_1) != 1:
+            continue
+        assert j1s == j1s_1
+
+        j2s = [j for j in range(n+1) if (i+2, j) in set2]
+        if len(j2s) != 1:
+            continue
+        [j2] = j2s
+
+        assert (j1, j2) in set2
+
+        word1, word2 = map(list, pair)
+        leaf_index1, leaf_index2 = pair.leaf_indexes()
+
+        li1 = leaf_index1[i]
+        assert word1[li1-2:li1+5] == list("((oo)o)")
+        word1[li1 - 2:li1 + 5] = list("(o(oo))")
+
+        # (((?o)o)(o?)) --> ((?o)(o(o?)))
+        li2 = leaf_index2[i]
+        li_j2 = leaf_index2[j2-1]
+        li_j1 = leaf_index2[j1]
+        assert li_j1 < li2 < li_j2
+
+        # Part 1: ?)) --> ?)))
+        assert word2[li_j2:li_j2+3] == list("o))")
+        word2[li_j2:li_j2 + 3] = list("o)))")
+
+        # Part 2: o)o)(o --> o)(o(o
+        try:
+            assert word2[li2:li2+6] == list("o)o)(o")
+        except AssertionError:
+            breakpoint()
+        word2[li2:li2 + 6] = list("o)(o(o")
+
+        # Part 3: (((? --> ((?
+        assert word2[li_j1-3:li_j1+1] == list("(((o")
+        word2[li_j1 - 3:li_j1+1] = list("((o")
+
+        yield TreePair(''.join(word1), ''.join(word2))
+
+
+

@@ -1,21 +1,27 @@
 from moves import TreePair, all_move_functions
-from collections import defaultdict
+from collections import defaultdict, Counter
+from tqdm import tqdm
 
 
-with open("trefoil_trees8.txt") as f:
+with open("unlink_trees9.txt") as f:
     data = f.read()
 
-f = open("trefoil_component8.txt", 'w')
+OUTFILE = "unlink_components9.txt"
+
+# f = open(OUTFILE, 'w')
 
 nodes = [TreePair(line) for line in data.splitlines()]
+set_nodes = set(nodes)
 
 connections = defaultdict(list)
 
-for node in nodes:
+for node in tqdm(nodes):
     assert isinstance(node, TreePair)
     for func in all_move_functions:
         for neighbor in func(node):
             assert isinstance(neighbor, TreePair), func
+            if neighbor not in set_nodes:
+                breakpoint()
             connections[node].append(
                 (func.__name__, neighbor)
             )
@@ -23,7 +29,10 @@ for node in nodes:
                 ("inverse " + func.__name__, node)
             )
 
-assert set(nodes) == set(connections.keys())
+# expected = set(nodes)
+actual = set(connections.keys())
+assert set_nodes == actual, (set_nodes-actual, actual-set_nodes)
+# assert set(nodes) == set(connections.keys()), (set(nodes) - set(connections.keys()))
 
 from pprint import pprint
 # print("===== connections =====")
@@ -44,16 +53,31 @@ for i, node in enumerate(nodes):
 
 components = sorted(label_to_list.values(), key=len)
 
-for arr in components:
-    for pair in arr:
-        print(pair, file=f)
-    print("\n" + "-"*50 + "\n", file=f)
+with open(OUTFILE, 'w') as f:
+    for arr in components:
+        for pair in arr:
+            print(pair, file=f)
+        print("\n" + "-"*50 + "\n", file=f)
 # for arr in label_to_list.values():
 #     pprint(arr)
 #     print()
 
 lengths = sorted(len(arr) for arr in label_to_list.values())
-print(lengths, f"sum={sum(lengths)}")
+print(lengths)
+print(Counter(lengths))
+print(f"sum={sum(lengths)}")
+
+
+for n in range(3, 100):
+
+    lengths = (sum(t.num_leaves() == n for t in arr)
+               for arr in label_to_list.values())
+    lengths = sorted(filter(None, lengths))
+    if sum(lengths) == 0:
+        break
+    print(n)
+    print(lengths)
+    print()
 
 
 

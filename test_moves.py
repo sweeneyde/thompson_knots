@@ -54,15 +54,20 @@ def test_move_local2_improved2():
     assert list(move_local2_improved2(uncurled_3)) == []
 
 def test_move_outside2():
-    no_extra = TreePair("((o((oo)o))(oo)) / (((oo)(o(oo)))o)")
     with_extra = TreePair("(o((o((oo)o))(oo))) / (((o(oo))(o(oo)))o)")
+    no_extra = TreePair("((o((oo)o))(oo)) / (((oo)(o(oo)))o)")
     assert list(move_outside2(with_extra)) == [no_extra]
     assert list(move_outside2(no_extra)) == []
 
-    no_extra2 = TreePair("((oo)(oo)) / (((oo)o)o)")
     with_extra2 = TreePair("(o((oo)(oo))) / (((o(oo))o)o)")
+    no_extra2 = TreePair("((oo)(oo)) / (((oo)o)o)")
     assert list(move_outside2(with_extra2)) == [no_extra2]
     assert list(move_outside2(no_extra2)) == []
+
+    no_extra3 = TreePair('((oo)(o(oo))) / ((o((oo)o))o)')
+    with_extra3 = TreePair('(o((oo)(o(oo)))) / ((o(o((oo)o)))o)')
+    assert list(move_outside2(with_extra3)) == []
+
 
 def test_move_insert_block():
     template = "((({}{}){}){}) / ({}(({}{}){}))"
@@ -123,3 +128,21 @@ def test_move_local6():
     before2 = TreePair("((o(o((oo)(oo))))o) / ((((oo)o)o)(o(oo)))")
     after2 = TreePair("((o(oo))o) / (o(o(oo)))")
     assert list(move_local6(before2)) == [after2]
+
+
+def test_move_local_twist():
+    before1 = TreePair("(o((o(o(oo)))(oo))) / ((oo)((oo)((oo)o)))")
+    after1 = TreePair("(o((oo)o)) / ((oo)(oo))")
+    assert list(move_local_twist(before1)) == [after1]
+
+    before2 = TreePair("((o(oo))(oo)) / ((oo)((oo)o))")
+    after2 = TreePair("(oo) / (oo)")
+    assert list(move_local_twist(before2)) == [after2]
+
+
+def test_move_local_shufflebights():
+    before1 = TreePair("(o(o((o(o((oo)o)))o))) / (((((oo)(oo))o)o)(oo))")
+    after1  = TreePair("(o(o((o(o(o(oo))))o))) / ((((oo)(oo))o)(o(oo)))")
+
+    assert list(move_local_shufflebights(before1)) == [after1]
+
