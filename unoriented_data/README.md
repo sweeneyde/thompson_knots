@@ -7,3 +7,5 @@ and Thompson's group does not in general offer a canonical orientation,
 orientations have been assigned arbitrarily.
 Hence, there are multiple polynomials per unoriented link,
 and there might not be the same number of tree pairs in each polynomial component.
+
+`unoriented6_labelled.txt` and `unoriented7.txt` have each polynomial component labelled with the name of the corresponding link. I added these labels by hand, so it's possible there are mistakes.
