@@ -105,3 +105,9 @@ on tree-pairs to see how far they get towards being "all of the moves we
 need". Tests are included in [test_moves.py](test_moves.py) and can be
 run with [PyTest](https://docs.pytest.org/en/6.2.x/getting-started.html).
 
+
+# Results
+
+Rushil, Raghavan and Dennis Sweeney.
+"Regular Isotopy Classes of Link Diagrams From Thompson's Groups."
+ArXiv:2008.11052 [Math], Nov. 2020. arXiv.org, http://arxiv.org/abs/2008.11052.
