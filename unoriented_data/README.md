@@ -8,7 +8,10 @@ orientations have been assigned arbitrarily.
 Hence, there are multiple polynomials per unoriented link,
 and there might not be the same number of tree pairs in each polynomial component.
 
-`unoriented6_labelled.txt` and `unoriented7.txt` have each polynomial component labelled with the name of the corresponding link. I added these labels by hand, so it's possible there are mistakes.
+`unoriented6_labelled.txt`, `unoriented7.txt`, and `unoriented7.txt`
+have each polynomial component labelled with the name of the corresponding link.
+I added these labels by hand, so it's possible there are mistakes.
+In these labels, `+` denotes a distant union and `#` denotes a connected sum.
 
 To save space and computation time,
 `unoriented10_prime_and_first_of_symmetries.txt`
