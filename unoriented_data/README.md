@@ -27,7 +27,7 @@ to find the *prime* links with Thompson index at most 10.
 ```
 The Thompson index of 3_1 is 5 leaves.
 The Thompson index of 4_1 is 7 leaves.
-The Thompson index of 5_1|10_132 is 8 leaves.
+The Thompson index of 5_1|10_132 is 8 leaves. 5_1 is 8.
 The Thompson index of 5_2 is 7 leaves.
 The Thompson index of 6_1 is 8 leaves.
 The Thompson index of 6_2 is 8 leaves.
@@ -54,7 +54,7 @@ The Thompson index of 8_12 is 9 leaves.
 The Thompson index of 8_13 is 10 leaves.
 The Thompson index of 8_14 is 9 leaves.
 The Thompson index of 8_15 is 9 leaves.
-The Thompson index of 8_16|10_156 is 10 leaves.
+The Thompson index of 8_16|10_156 is 10 leaves. 8_16 is 10.
 The Thompson index of 8_17 is 9 leaves.
 The Thompson index of 8_18 is 11 leaves.
 The Thompson index of 8_19 is 7 leaves.
